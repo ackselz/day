@@ -7,6 +7,24 @@ export default function RootLayout({
                                    }: {
     children: React.ReactNode;
 }) {
+
+    const [time, setTime] = useState(0)
+    const [start, setStart] = useState(true)
+
+    useEffect(() => {
+        let interval: any = null;
+
+        if(start) {
+            interval = setInterval(() => {
+                setTime(prevTime => prevTime + 10)
+            }, 10)
+        } else {
+            clearInterval(interval);
+        }
+
+        return () => clearInterval(interval)
+    }, [start])
+
     return (
         <main className="min-h-screen flex flex-col">
             <AbandonButton/>
