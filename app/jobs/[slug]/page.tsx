@@ -54,8 +54,8 @@ const page = () => {
     ];
 
     return (
-        <main className="grid gap-8 my-8 max-w-4xl justify-items-center">
-            <div className="">
+        <div className="grid gap-8 my-8 justify-items-center">
+            <div className="max-w-4xl">
                 <ul className="relative flex flex-row gap-x-2">
                     {steps.map((step, index) => (
                         <Step
@@ -71,7 +71,7 @@ const page = () => {
             <div className="w-full max-w-xl mb-16">
                 {steps[activeIndex].component}
             </div>
-        </main>
+        </div>
     );
 };
 

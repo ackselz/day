@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -15,17 +17,20 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+    const router = useRouter();
     return (
-        <main className="max-w-2xl">
-            <Card className="">
+        <main className="w-screen min-h-screen grid place-items-center">
+            <Card className="max-w-xl">
                 <CardHeader className="">
                     <CardTitle>Software Development Engineer Co-Op</CardTitle>
                     <Dialog>
-                        <DialogTrigger>
-                            <Button className="flex rounded-full">Apply</Button>
+                        <DialogTrigger asChild>
+                            <div className="py-4">
+                                <Button className="rounded-full">Apply</Button>
+                            </div>
                         </DialogTrigger>
                         <DialogContent>
                             <DialogHeader>
@@ -37,17 +42,19 @@ const page = () => {
                                 </DialogDescription>
                             </DialogHeader>
                             <div className="grid gap-4">
-                                <Button className="rounded-full">
+                                <Button
+                                    className="rounded-full"
+                                    onClick={() => router.push("/jobs/sample")}
+                                >
                                     Autofill with Resume
                                 </Button>
-                                <Link href="/jobs/sample">
-                                    <Button
-                                        variant={"outline"}
-                                        className="rounded-full w-full"
-                                    >
-                                        Apply Manually
-                                    </Button>
-                                </Link>
+                                <Button
+                                    variant={"outline"}
+                                    className="rounded-full w-full"
+                                    onClick={() => router.push("/jobs/sample")}
+                                >
+                                    Apply Manually
+                                </Button>
                                 <Separator />
                                 <Button
                                     variant={"outline"}
