@@ -6,6 +6,7 @@ import MyExperience from "@/components/form/MyExperience";
 import MyInformation from "@/components/form/MyInformation";
 import { useState } from "react";
 import VoluntaryDisclosures from "@/components/form/VoluntaryDisclosures";
+import Review from "@/components/Review";
 
 const page = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -49,7 +50,12 @@ const page = () => {
         },
         {
             title: "Review",
-            component: <div className="">Review</div>,
+            component: (
+                <Review
+                    handleBack={handleBack}
+                    handleNext={handleNext}
+                />
+            ),
         },
     ];
 
