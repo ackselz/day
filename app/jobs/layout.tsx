@@ -11,7 +11,7 @@ export default function RootLayout({
         <main className="min-h-screen flex flex-col">
             <AbandonButton/>
             {children}
-            <Timer/>
+            <Timer div1Active={false} div2Active={false} div3Active={false} div4Active={false}/>
         </main>
     );
 }
