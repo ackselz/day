@@ -8,6 +8,10 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import {sort} from "next/dist/build/webpack/loaders/css-loader/src/utils";
+import {createServerComponentClient} from "@supabase/auth-helpers-nextjs";
+import {cookies} from "next/headers";
+// @ts-ignore
+import { Database } from '../database.types'
 
 interface RunData {
     name: string;
@@ -15,26 +19,16 @@ interface RunData {
     timing: string;
 }
 
-const data: RunData[] = [
-    {name: "Jialu", runType: "Blitz", timing:"05:52"},
-    { name: "Alicia", runType: "Survival", timing: "05:43" },
-    { name: "Benedict", runType: "Rush", timing: "06:08" },
-    { name: "Clara", runType: "Quest", timing: "05:21" },
-    { name: "David", runType: "Maze", timing: "06:23" },
-    { name: "Elena", runType: "Adventure", timing: "05:35" },
-    { name: "Frank", runType: "Challenge", timing: "06:15" },
-    { name: "Grace", runType: "Arena", timing: "05:47" },
-    { name: "Henry", runType: "Race", timing: "06:02" },
-    { name: "Ivy", runType: "Journey", timing: "05:56" },
-    { name: "Jack", runType: "Puzzle", timing: "06:10" },
-]
+export default async function Leaderboard() {
+    const supabase = createServerComponentClient<Database>({ cookies })
 
-const sortedData = data.sort((a, b) => {
-    const timeA = new Date(`2000-01-01T${a.timing}`);
-    const timeB = new Date(`2000-01-01T${b.timing}`);
-    return timeA.getTime() - timeB.getTime();
-});
-export default function Leaderboard() {
+    let { data: runs, error } = await supabase
+        .from('runs')
+        .select('*')
+
+    console.log(runs)
+    console.log("Testing")
+
     return (
         <Table>
             <TableCaption>Recent JobRuns</TableCaption>
@@ -46,7 +40,7 @@ export default function Leaderboard() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {sortedData.map((item, index) => (
+                {runs?.map((item, index) => (
                     <TableRow
                         className={
                             index === 0 ? 'bg-orange-200' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-orange-700' : ''

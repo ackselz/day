@@ -25,6 +25,11 @@ export default async function Navbar({ pathname }: { pathname: string | null }) 
                     </Button>
                 </div>
                 <div className="h-full">
+                    <Button variant="outline" asChild className={`rounded-none border-0 ${pathname === "myruns" ? "border-b-2 border-orange-300" : "border-b-2 border-transparent"}`}>
+                        <Link href={"/myruns"}>My Runs</Link>
+                    </Button>
+                </div>
+                <div className="h-full">
                     <Button variant="outline" asChild className={`rounded-none border-0 ${pathname === "run" ? "border-b-2 border-orange-300" : "border-b-2 border-transparent"}`}>
                         <Link href={"/run"}>Run</Link>
                     </Button>
