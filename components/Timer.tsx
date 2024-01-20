@@ -8,16 +8,16 @@ interface ChildProps {
     questions: boolean;
     voluntary: boolean;
     review: boolean;
+    signupSplit: number;
+    personalInfoSplit: number;
+    expSplit: number;
+    questionsSplit: number;
+    voluntarySplit: number;
+    reviewSplit: number;
     time: number;
     start: boolean;
     setTime: React.Dispatch<React.SetStateAction<number>>;
     setStart: React.Dispatch<React.SetStateAction<boolean>>;
-    setSignup: React.Dispatch<React.SetStateAction<boolean>>;
-    setPersonalInfo: React.Dispatch<React.SetStateAction<boolean>>;
-    setExp: React.Dispatch<React.SetStateAction<boolean>>;
-    setQuestions: React.Dispatch<React.SetStateAction<boolean>>;
-    setVoluntary: React.Dispatch<React.SetStateAction<boolean>>;
-    setReview: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface SectionProps {
@@ -50,16 +50,16 @@ const Timer: React.FC<ChildProps> = ({
                                          questions,
                                          voluntary,
                                          review,
+                                         signupSplit,
+                                         personalInfoSplit,
+                                         expSplit,
+                                         questionsSplit,
+                                         voluntarySplit,
+                                         reviewSplit,
                                          time,
                                          start,
                                          setTime,
                                          setStart,
-                                         setSignup,
-                                         setPersonalInfo,
-                                         setExp,
-                                         setQuestions,
-                                         setVoluntary,
-                                         setReview,
                                                   }) => {
     const [splitTime, setSplitTime] = useState<number>(0);
 
@@ -84,12 +84,12 @@ const Timer: React.FC<ChildProps> = ({
     return (
         <div className="fixed left top-1/2 transform -translate-y-1/2 pb-0 m-5 w-60 h-20">
             <div className="rounded bg-black flex flex-wrap flex-col p-2 bg-opacity-90 border-gray-300 border-2">
-                <Section title="Sign Up" active={signup} splitTime={splitTime} />
-                <Section title="Personal Info" active={personalInfo} splitTime={splitTime} />
-                <Section title="Work Exp." active={exp} splitTime={splitTime} />
-                <Section title="Application Q." active={questions} splitTime={splitTime} />
-                <Section title="Disclosures" active={voluntary} splitTime={splitTime} />
-                <Section title="Review & Submit" active={review} splitTime={splitTime} />
+                <Section title="Sign Up" active={signup} splitTime={signupSplit} />
+                <Section title="Personal Info" active={personalInfo} splitTime={personalInfoSplit} />
+                <Section title="Work Exp." active={exp} splitTime={expSplit} />
+                <Section title="Application Q." active={questions} splitTime={questionsSplit} />
+                <Section title="Disclosures" active={voluntary} splitTime={voluntarySplit} />
+                <Section title="Review & Submit" active={review} splitTime={reviewSplit} />
                 <h1 className="font-semibold text-4xl text-green-500">
                     <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
                     <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>

@@ -65,7 +65,6 @@ const Review = ({
                             <Button type="button" onClick={handleBack}>
                                 Back
                             </Button>
-                            <Button type="submit">Submit</Button>
                         </div>
                     </div>
                 </div>
