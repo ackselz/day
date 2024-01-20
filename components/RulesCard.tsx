@@ -1,3 +1,4 @@
+"use client"
 import {
     Card,
     CardContent,
@@ -10,6 +11,7 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 
 export default function RulesCard() {
+
     return (
         <div>
             <Card>
@@ -23,14 +25,15 @@ export default function RulesCard() {
                 </CardHeader>
                 <CardContent>
                     <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
+                        <li>From here on out, this will be a full-fledged simulation.</li>
                         <li>Please use the information on the given resume!</li>
                         <li>Please do not input personal information.</li>
                         <li>Time will start once you press GO.</li>
                     </ul>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                    <Button variant="outline">
-                        Download resume here
+                    <Button asChild variant="outline">
+                        <a href="/cv.pdf" target='_blank' rel='noopener noreferrer'>Open Resume</a>
                     </Button>
                     <Button asChild className="bg-green-500">
                         <Link href={"/jobs"}>
