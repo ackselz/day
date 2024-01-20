@@ -16,25 +16,40 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useState } from "react";
 
-const formSchema = z.object({
-    username: z.string().min(1),
-    password: z.string().min(1),
-});
+const formSchema = z
+    .object({
+        username: z.string().min(1),
+        password: z.string().min(4),
+        confirm: z.string(),
+    })
+    .refine((data) => data.password === data.confirm, {
+        message: "Passwords don't match",
+        path: ["confirm"],
+    });
 
 const page = () => {
-    const [error, setError] = useState(false);
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues: { username: "", password: "" },
+        defaultValues: { username: "", password: "", confirm: "" },
     });
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
-        setError(true);
+        const promise = () =>
+            new Promise((resolve) => setTimeout(() => resolve(null), 2000));
+        toast.promise(promise, {
+            loading: "Creating your account...",
+            success: () => {
+                router.push("/jobs/sample");
+                return "Your account has been created successfully";
+            },
+            error: "An error has occured",
+        });
     }
 
     function onInvalid(errors: any) {
@@ -46,9 +61,9 @@ const page = () => {
             <div className="grid gap-4 justify-items-center">
                 <Card className="w-[350px]">
                     <CardHeader>
-                        <CardTitle>Sign In</CardTitle>
+                        <CardTitle>Register</CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-4">
+                    <CardContent>
                         <Form {...form}>
                             <form
                                 onSubmit={form.handleSubmit(
@@ -86,34 +101,35 @@ const page = () => {
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit">Sign In</Button>
+                                <FormField
+                                    control={form.control}
+                                    name="confirm"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>
+                                                Confirm Password
+                                            </FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    type="password"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <Button type="submit">Sign Up</Button>
                             </form>
                         </Form>
-                        {error && (
-                            <p className="text-destructive text-sm">
-                                Account not found. Please create an account.
-                            </p>
-                        )}
                     </CardContent>
                 </Card>
                 <p>
-                    Don't have an account yet?&nbsp;
-                    <Link href={"/jobs/register"} className="underline">
-                        Create Account
+                    Already have an account?&nbsp;
+                    <Link href={"/jobs/login"} className="underline">
+                        Sign In
                     </Link>
                 </p>
-                <Link
-                    href={""}
-                    className="underline"
-                    onClick={() =>
-                        toast.warning("Silly goose 🪿", {
-                            description:
-                                "Do you expect us to remember your password?",
-                        })
-                    }
-                >
-                    Forgot your password?
-                </Link>
             </div>
         </div>
     );

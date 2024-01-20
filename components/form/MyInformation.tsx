@@ -222,7 +222,7 @@ const MyInformation = ({ handleNext }: { handleNext: () => void }) => {
                         )}
                     />
                 </div>
-                <div className="fixed w-full left-0 bottom-0 py-4 bg-background border-t-2">
+                <div className="fixed w-screen left-0 bottom-0 py-4 bg-background border-t-2">
                     <div className="mx-auto max-w-3xl">
                         <div className="flex gap-4 justify-end">
                             <Button type="submit">Save and Continue</Button>

@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const page = () => {
     const router = useRouter();
@@ -44,14 +45,14 @@ const page = () => {
                             <div className="grid gap-4">
                                 <Button
                                     className="rounded-full"
-                                    onClick={() => router.push("/jobs/sample")}
+                                    onClick={() => router.push("/jobs/login")}
                                 >
                                     Autofill with Resume
                                 </Button>
                                 <Button
                                     variant={"outline"}
                                     className="rounded-full w-full"
-                                    onClick={() => router.push("/jobs/sample")}
+                                    onClick={() => router.push("/jobs/login")}
                                 >
                                     Apply Manually
                                 </Button>
@@ -59,11 +60,25 @@ const page = () => {
                                 <Button
                                     variant={"outline"}
                                     className="rounded-full"
+                                    onClick={() => {
+                                        toast.warning("You silly goose 🪿", {
+                                            description:
+                                                "You should know better than to click that button",
+                                        });
+                                    }}
                                 >
                                     Use My Last Application
                                 </Button>
                                 <Separator />
-                                <Button className="rounded-full bg-gray-500">
+                                <Button
+                                    className="rounded-full bg-gray-500"
+                                    onClick={() => {
+                                        toast.warning("You silly goose 🪿", {
+                                            description:
+                                                "You should know better than to click that button",
+                                        });
+                                    }}
+                                >
                                     Apply With LinkedIn
                                 </Button>
                             </div>
