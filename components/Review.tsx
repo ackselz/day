@@ -39,11 +39,12 @@ const Review = ({
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <p className="text-2xl font-bold">Review your information</p>
                 <FormField
                     control={form.control}
                     name="terms"
-                    render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md">
+                    render={({field}) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md">'
                             <FormControl>
                                 <Checkbox
                                     checked={field.value}
@@ -64,7 +65,6 @@ const Review = ({
                             <Button type="button" onClick={handleBack}>
                                 Back
                             </Button>
-                            <Button type="submit">Submit</Button>
                         </div>
                     </div>
                 </div>
