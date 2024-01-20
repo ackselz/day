@@ -19,11 +19,16 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import AbandonButton from "@/components/AbandonButton";
+import Timer from "@/components/Timer";
 
 const page = () => {
     const router = useRouter();
     return (
         <main className="w-screen min-h-screen grid place-items-center">
+            <div className="fixed top-0 left-0 m-5">
+                <AbandonButton/>
+            </div>
             <Card className="max-w-xl">
                 <CardHeader className="">
                     <CardTitle>Software Development Engineer Co-Op</CardTitle>

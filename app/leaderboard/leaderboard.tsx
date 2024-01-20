@@ -26,9 +26,6 @@ export default async function Leaderboard() {
         .from('runs')
         .select('*')
 
-    console.log(runs)
-    console.log("Testing")
-
     return (
         <Table>
             <TableCaption>Recent JobRuns</TableCaption>
