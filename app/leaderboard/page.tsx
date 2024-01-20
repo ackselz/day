@@ -14,7 +14,7 @@ export default function LeaderboardPage() {
                     alt={"Corporate Royalty Free Photo (Random)"}
                     width={2000}
                     height={300}
-                    className="object-fill"
+                    className="object-cover"
                 />
             </div>
             <a className="m-3 text-4xl font-semibold tracking-tight">
