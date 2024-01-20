@@ -10,6 +10,12 @@ export default function RootLayout({
 
     const [time, setTime] = useState(0)
     const [start, setStart] = useState(true)
+    const [signup, setSignup] = useState(false)
+    const [personalInfo, setPersonalInfo] = useState(false)
+    const [exp, setExp] = useState(false)
+    const [questions, setQuestions] = useState(false)
+    const [voluntary, setVoluntary] = useState(false)
+    const [review, setReview] = useState(false)
 
     useEffect(() => {
         let interval: any = null;
@@ -29,7 +35,24 @@ export default function RootLayout({
         <main className="min-h-screen flex flex-col">
             <AbandonButton/>
             {children}
-            <Timer div1Active={false} div2Active={false} div3Active={false} div4Active={false} div5Active={false} div6Active={false}/>
+            <Timer
+                signup={false}
+                personalInfo={false}
+                exp={false}
+                questions={false}
+                voluntary={false}
+                review={false}
+                time={time}
+                start={start}
+                setTime={setTime}
+                setStart={setStart}
+                setSignup={setSignup}
+                setPersonalInfo={setPersonalInfo}
+                setExp={setExp}
+                setQuestions={setQuestions}
+                setVoluntary={setVoluntary}
+                setReview={setReview}
+            />
         </main>
     );
 }
