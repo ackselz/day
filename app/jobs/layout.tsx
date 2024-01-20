@@ -1,5 +1,4 @@
 "use client"
-import Timer from "@/components/Timer";
 import React, {useState, useEffect} from 'react'
 import AbandonButton from "@/components/AbandonButton";
 export default function RootLayout({

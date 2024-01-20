@@ -95,15 +95,6 @@ const Timer: React.FC<ChildProps> = ({
                     <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
                     <span className="text-xl">{("0" + (time / 10) % 60).slice(-2)}</span>
                 </h1>
-                <div className="flex flex-row gap-5 text-white">
-                    <button onClick={() => setStart(true)}>Start</button>
-                    <button onClick={() => setStart(false)}>Stop</button>
-                    <button onClick={handleSplit}>Split</button>
-                    <button onClick={() => {
-                        setTime(0);
-                        setStart(false);
-                    }}>Reset</button>
-                </div>
             </div>
         </div>
     )

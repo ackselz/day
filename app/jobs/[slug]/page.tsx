@@ -26,6 +26,7 @@ const page = () => {
     const [questionsSplit, setQuestionsSplit] = useState(0);
     const [voluntarySplit, setVoluntarySplit] = useState(0);
     const [reviewSplit, setReviewSplit] = useState(0);
+    const [done, setDone] = useState(false);
 
 
     const handleBack = () => {
@@ -38,6 +39,7 @@ const page = () => {
 
     const handleSubmit = () => {
         setStart(false);
+        setDone(true);
     };
 
     useEffect(() => {
@@ -126,7 +128,7 @@ const page = () => {
             <div className="w-full max-w-xl mb-16">
                 {steps[activeIndex].component}
             </div>
-            <div className="fixed right-0 top-0 transform -translate-x-1/2 -translate-y-1 pb-0 w-60 h-20">
+            <div className={`fixed ${done ? '' : 'right-0'} ${done ? 'left-1/2' : ''} transform -translate-x-1/2 w-60 h-32  `}>
                 <Timer
                     signup={signup}
                     personalInfo={personalInfo}
