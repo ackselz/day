@@ -21,7 +21,7 @@ export default function Timer() {
     }, [start])
 
     return (
-        <div className="fixed right-0 bottom-0 pb-0 m-5 w-60 h-20">
+        <div className="fixed left-0 bottom-0 pb-0 m-5 w-60 h-20">
             <div className="rounded bg-black flex flex-wrap flex-col p-2 bg-opacity-90 border-gray-300 border-2">
                 <h1 className="font-semibold text-4xl text-green-500">
                     <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
