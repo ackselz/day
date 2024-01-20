@@ -88,14 +88,14 @@ export default function ProfileCard({ user }: { user: User | null }) {
     }
 
     return (
-        <Card className="drop-shadow-sm flex flex-col gap-2 h-full">
+        <Card className="flex flex-col gap-2 h-full">
             <CardHeader>
                 <CardTitle>
                     Candidate Profile
                 </CardTitle>
                 <Avatar
                     // @ts-ignore
-                    uid={user.id}
+                    uid={user?.id}
                     url={avatar_url}
                     size={150}
                     onUpload={(url) => {

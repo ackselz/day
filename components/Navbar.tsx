@@ -16,7 +16,7 @@ export default async function Navbar({ pathname }: { pathname: string | null }) 
     } = await supabase.auth.getUser()
 
     return (
-        <div className="flex flex-row w-full h-32 bg-white drop-shadow-md place-items-center p-3 pl-5 justify-between border-t-8 border-orange-300">
+        <div className="flex flex-row w-full h-32 bg-white drop-shadow-md place-items-center p-3 px-6 justify-between border-t-8 border-orange-300">
             <Logo/>
             <div className="flex flex-row gap-6 place-items-center">
                 <div className="h-full">
